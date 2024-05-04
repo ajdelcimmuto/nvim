@@ -44,6 +44,8 @@ vim.cmd([[
 
   Plug 'ellisonleao/gruvbox.nvim'
 
+  Plug 'nvim-tree/nvim-web-devicons'
+
   " Initialize plugin system
   call plug#end()
 ]])

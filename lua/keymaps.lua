@@ -62,3 +62,9 @@ vim.keymap.set('v', '<leader>c', 'gc', { noremap = true, silent = true })
 -- Definition key binds
 vim.keymap.set('n', 'gd', vim.lsp.buf.definition, { noremap = true, silent = true })
 vim.keymap.set('n', 'gb', vim.lsp.buf.references, { noremap = true, silent = true })
+
+vim.g.fzf_action = {
+  ['ctrl-v'] = 'vsplit',
+  ['ctrl-x'] = 'split',
+  ['ctrl-t'] = 'tab split',
+}
