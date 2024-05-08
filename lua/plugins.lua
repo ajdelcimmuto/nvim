@@ -46,6 +46,8 @@ vim.cmd([[
 
   Plug 'nvim-tree/nvim-web-devicons'
 
+  Plug 'RaafatTurki/hex.nvim'
+
   " Initialize plugin system
   call plug#end()
 ]])

@@ -50,3 +50,5 @@ vim.opt.swapfile = false
 
 -- Set the clipboard to use the system clipboard
 vim.opt.clipboard = "unnamedplus"
+
+vim.wo.wrap = false
