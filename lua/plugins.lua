@@ -2,6 +2,9 @@
 vim.cmd([[
   call plug#begin('~/.config/nvim/plugged')
 
+  " treesitter
+  Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+
   " The catppuccin/nvim theme plugin
   Plug 'catppuccin/nvim', { 'as': 'catppuccin' }
 
@@ -25,7 +28,7 @@ vim.cmd([[
   Plug 'hrsh7th/nvim-cmp'
   
   " Roku language support
-  Plug 'ajdelcimmuto/roku.vim'
+  " Plug 'ajdelcimmuto/roku.vim'
 
   " Nvim DAP - debugger
   Plug 'mfussenegger/nvim-dap'
@@ -58,3 +61,5 @@ require('plugins.lsp')
 require('plugins.dap')
 require('plugins.theme')
 require('plugins.ibl')
+require('plugins.treesitter')
+
