@@ -4,6 +4,7 @@ vim.cmd([[
 
   " treesitter
   Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+  Plug 'nvim-treesitter/nvim-treesitter-textobjects'
 
   " The catppuccin/nvim theme plugin
   Plug 'catppuccin/nvim', { 'as': 'catppuccin' }
