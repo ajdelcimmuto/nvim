@@ -5,6 +5,45 @@ dap.adapters.brightscript = {
    args = { '--verbose', 'roku-debug', '--dap' },
 }
 
+dap.adapters.lldb = {
+  type = 'executable',
+  command = '/opt/homebrew/opt/llvm/bin/lldb-dap', -- adjust as needed, must be absolute path
+  name = 'lldb'
+}
+
+dap.configurations.cpp = {
+  {
+    name = 'Launch',
+    type = 'lldb',
+    request = 'launch',
+    program = function()
+      return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
+    end,
+    cwd = '${workspaceFolder}',
+    stopOnEntry = false,
+    args = {},
+  },
+}
+
+dap.configurations.c = dap.configurations.cpp
+
+dap.configurations.rust = {
+  {
+    type = 'lldb',
+    request = 'launch',
+    name = 'Launch',
+    program = function()
+      vim.fn.jobstart('cargo build')
+      return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/target/debug', 'file')
+    end,
+    cwd = '${workspaceFolder}',
+    stopOnEntry = false,
+    args = {},
+    runInTerminal = true,
+    -- ... other configuration options ...
+  }
+}
+
 dap.configurations.brs = {
    {
       type = 'brightscript',
@@ -64,8 +103,9 @@ dapui.setup({
     {
       elements = {
         "repl",
+        "console",
       },
-      size = 40,
+      size = 25,
       position = "bottom",
     },
   },
@@ -91,3 +131,4 @@ end
 dap.listeners.before.event_exited.dapui_config = function()
   dapui.close()
 end
+

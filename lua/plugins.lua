@@ -30,7 +30,9 @@ vim.cmd([[
   Plug 'hrsh7th/cmp-path'
   Plug 'hrsh7th/cmp-cmdline'
   Plug 'hrsh7th/nvim-cmp'
-  
+  Plug 'hrsh7th/vim-vsnip'
+  Plug 'hrsh7th/vim-vsnip-integ' 
+
   " Roku language support
   " Plug 'ajdelcimmuto/roku.vim'
 
@@ -46,7 +48,7 @@ vim.cmd([[
   Plug 'airblade/vim-gitgutter'
 
   " visualize tabs
-  Plug 'lukas-reineke/indent-blankline.nvim'
+  " Plug 'lukas-reineke/indent-blankline.nvim'
   
   " comment plugin
   Plug 'tpope/vim-commentary'
@@ -69,7 +71,7 @@ require('plugins.cmp')
 require('plugins.lsp')
 require('plugins.dap')
 require('plugins.theme')
-require('plugins.ibl')
+-- require('plugins.ibl')
 require('plugins.treesitter')
 require('plugins.alpha')
 

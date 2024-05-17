@@ -59,9 +59,11 @@ require'nvim-treesitter.configs'.setup {
 local parser_config = require "nvim-treesitter.parsers".get_parser_configs()
 parser_config.brightscript = {
     install_info = {
-        url = "C:/Users/ajdel/Dev/tree-sitter-brightscript", -- local path or git repo
+        -- url = "~/Dev/tree-sitter-brightscript", -- local path or git repo
+        url = "https://github.com/ajdelcimmuto/tree-sitter-brightscript",
         files = {"src/parser.c"}, -- note that some parsers also require src/scanner.c or src/scanner.cc
-    },
+        branch = "developer"
+      },
     filetype = "brs"
 }
 
