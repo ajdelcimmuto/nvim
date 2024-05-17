@@ -32,7 +32,7 @@ vim.cmd([[
   Plug 'hrsh7th/vim-vsnip-integ' 
 
   " Roku language support
-  Plug 'ajdelcimmuto/roku.vim'
+  " Plug 'ajdelcimmuto/roku.vim'
 
   " Nvim DAP - debugger
   Plug 'mfussenegger/nvim-dap'
