@@ -3,7 +3,7 @@ require'nvim-treesitter.configs'.setup {
         enable = true,
     },
     indent = {
-        enable = true,
+        enable = false,
     },
     incremental_selection = {
         enable = true,
@@ -19,8 +19,8 @@ require'nvim-treesitter.configs'.setup {
             enable = true,
             set_jumps = true, -- whether to set jumps in the jumplist
             goto_next_start = {
-                ["]m"] = "@function.outer",
-                ["]]"] = { query = "@class.outer", desc = "Next class start" },
+                ["]]"] = "@function.outer",
+                -- ["]]"] = { query = "@class.outer", desc = "Next class start" },
                 --
                 -- You can use regex matching (i.e. lua pattern) and/or pass a list in a "query" key to group multiple queires.
                 ["]o"] = "@loop.*",
@@ -36,8 +36,8 @@ require'nvim-treesitter.configs'.setup {
                 ["]["] = "@class.outer",
             },
             goto_previous_start = {
-                ["[m"] = "@function.outer",
-                ["[["] = "@class.outer",
+                ["[["] = "@function.outer",
+                -- ["[["] = "@class.outer",
             },
             goto_previous_end = {
                 ["[M"] = "@function.outer",
