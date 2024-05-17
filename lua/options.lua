@@ -58,3 +58,6 @@ vim.opt.clipboard = "unnamedplus"
 
 vim.wo.wrap = false
 
+-- For gitgutter
+vim.opt.updatetime = 100
+

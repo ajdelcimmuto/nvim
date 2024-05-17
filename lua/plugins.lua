@@ -2,6 +2,9 @@
 vim.cmd([[
   call plug#begin('~/.config/nvim/plugged')
 
+  " Alpha welcomer
+  Plug 'goolord/alpha-nvim'
+
   " treesitter
   Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
   Plug 'nvim-treesitter/nvim-treesitter-textobjects'
@@ -18,8 +21,7 @@ vim.cmd([[
   Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.6' }
 
   " A status line plugin
-  Plug 'vim-airline/vim-airline'
-  Plug 'vim-airline/vim-airline-themes'
+  Plug 'nvim-lualine/lualine.nvim'
 
   " A roku support plugin
   Plug 'neovim/nvim-lspconfig'
@@ -40,7 +42,9 @@ vim.cmd([[
 
   " Git diff view
   Plug 'sindrets/diffview.nvim'
-  
+  " Git show adds and subtracts
+  Plug 'airblade/vim-gitgutter'
+
   " visualize tabs
   Plug 'lukas-reineke/indent-blankline.nvim'
   
@@ -53,6 +57,9 @@ vim.cmd([[
 
   Plug 'RaafatTurki/hex.nvim'
 
+  " mutliple cursors for changing occurances
+  Plug 'mg979/vim-visual-multi', {'branch': 'master'}
+
   " Initialize plugin system
   call plug#end()
 ]])
@@ -64,4 +71,5 @@ require('plugins.dap')
 require('plugins.theme')
 require('plugins.ibl')
 require('plugins.treesitter')
+require('plugins.alpha')
 
