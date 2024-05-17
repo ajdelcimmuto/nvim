@@ -26,9 +26,11 @@ vim.cmd([[
   Plug 'hrsh7th/cmp-path'
   Plug 'hrsh7th/cmp-cmdline'
   Plug 'hrsh7th/nvim-cmp'
-  
+  Plug 'hrsh7th/vim-vsnip'
+  Plug 'hrsh7th/vim-vsnip-integ' 
+
   " Roku language support
-  " Plug 'ajdelcimmuto/roku.vim'
+  Plug 'ajdelcimmuto/roku.vim'
 
   " Nvim DAP - debugger
   Plug 'mfussenegger/nvim-dap'

@@ -4,6 +4,7 @@ vim.g.mapleader = " "
 -- Enable syntax highlighting
 vim.cmd("syntax on")
 vim.cmd("filetype plugin indent on")
+
 -- vim.bo.indentexpr = "nvim_treesitter#indent()"
 
 vim.opt.scrolloff = 3
@@ -24,7 +25,7 @@ vim.opt.shiftwidth = 4
 vim.opt.expandtab = true
 
 vim.cmd [[
-  autocmd FileType brightscript setlocal tabstop=4 shiftwidth=4 expandtab commentstring='\ %s
+  autocmd FileType brs setlocal tabstop=4 shiftwidth=4 expandtab commentstring='\ %s
 ]]
 
 -- Enable autoindent
