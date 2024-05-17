@@ -58,7 +58,7 @@ dap.configurations.brs = {
          "RALEComponent/*.*",
          "locale/**/*.*"
       },
-      host = "192.168.10.125",
+      host = "192.168.1.222",
       remotePort = 8060,
       password = "pluto",
       injectRaleTrackerTask = true,
