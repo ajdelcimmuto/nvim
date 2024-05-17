@@ -42,9 +42,12 @@ map("n", "<Leader>di", ":lua require('dapui').toggle()<CR>", { noremap = true })
 -- Configure NERDTree
 vim.api.nvim_set_keymap("n", "<leader>n", ":NERDTreeToggle<CR>", { noremap = true })
 
--- Configure fzf
-vim.api.nvim_set_keymap("n", "<leader>f", ":Files<CR>", { noremap = true })
-vim.api.nvim_set_keymap('n', '<Leader>F', ':Rg<CR>', { noremap = true })
+-- Configure telescope
+local builtin = require('telescope.builtin')
+vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
+vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
+vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
+vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
 
 -- Open a new empty tab
 vim.api.nvim_set_keymap('n', '<leader>t', ':tabnew<CR>', { noremap = true, silent = true })

@@ -1,10 +1,14 @@
 -- Set the leader key to space
 vim.g.mapleader = " "
 
+vim.opt.foldmethod = "expr"
+vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
+vim.opt.foldenable = false  -- Disable folding at startup.
+
 -- Enable syntax highlighting
 vim.cmd("syntax on")
 vim.cmd("filetype plugin indent on")
--- vim.bo.indentexpr = "nvim_treesitter#indent()"
+vim.opt.indentexpr = "nvim_treesitter#indentexpr()"
 
 vim.opt.scrolloff = 3
 vim.opt.cursorline = true
