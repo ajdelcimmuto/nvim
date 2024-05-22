@@ -60,4 +60,5 @@ vim.wo.wrap = false
 
 -- For gitgutter
 vim.opt.updatetime = 100
+vim.g.gitgutter_map_keys = 0
 

@@ -48,7 +48,7 @@ vim.cmd([[
   Plug 'airblade/vim-gitgutter'
 
   " visualize tabs
-  " Plug 'lukas-reineke/indent-blankline.nvim'
+  Plug 'lukas-reineke/indent-blankline.nvim'
   
   " comment plugin
   Plug 'tpope/vim-commentary'
@@ -71,7 +71,7 @@ require('plugins.cmp')
 require('plugins.lsp')
 require('plugins.dap')
 require('plugins.theme')
--- require('plugins.ibl')
+require('plugins.ibl')
 require('plugins.treesitter')
 require('plugins.alpha')
 
