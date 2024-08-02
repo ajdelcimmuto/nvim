@@ -2,7 +2,8 @@
 vim.opt.background = "dark" -- set this to dark or light
 -- vim.cmd("colorscheme gruvbox")
 
-vim.cmd("colorscheme catppuccin-mocha")
+-- vim.cmd("colorscheme catppuccin-mocha")
+vim.cmd("colorscheme tokyonight-night")
 require('lualine').setup()
 -- vim.cmd [[
 --   let g:airline_theme='solarized'

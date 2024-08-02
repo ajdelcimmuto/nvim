@@ -11,3 +11,4 @@ require('keymaps')
 
 -- Load autocommands
 require('autocmds')
+

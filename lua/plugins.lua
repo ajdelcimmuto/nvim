@@ -11,6 +11,7 @@ vim.cmd([[
 
   " The catppuccin/nvim theme plugin
   Plug 'catppuccin/nvim', { 'as': 'catppuccin' }
+  Plug 'folke/tokyonight.nvim'
 
   " A file explorer plugin
   Plug 'preservim/nerdtree'
@@ -62,6 +63,15 @@ vim.cmd([[
   " mutliple cursors for changing occurances
   Plug 'mg979/vim-visual-multi', {'branch': 'master'}
 
+  " Tmux
+  Plug 'christoomey/vim-tmux-navigator'
+
+  "Formatter for json
+  Plug 'sbdchd/neoformat'
+  
+  " undo redo tree 
+  Plug 'mbbill/undotree'
+
   " Initialize plugin system
   call plug#end()
 ]])
@@ -74,4 +84,5 @@ require('plugins.theme')
 require('plugins.ibl')
 require('plugins.treesitter')
 require('plugins.alpha')
+require('plugins.telescope')
 

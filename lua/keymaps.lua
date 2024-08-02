@@ -49,6 +49,9 @@ vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
 vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
 vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
 
+-- Go to previous buffer
+vim.keymap.set('n', '<leader>bp', ':bprevious<CR>', { noremap = true, silent = true })
+
 -- Open a new empty tab
 vim.api.nvim_set_keymap('n', '<leader>t', ':tabnew<CR>', { noremap = true, silent = true })
 
@@ -76,4 +79,6 @@ vim.api.nvim_set_keymap('n', '<leader>h', '<C-w>h', { noremap = true })
 vim.api.nvim_set_keymap('n', '<leader>j', '<C-w>j', { noremap = true })
 vim.api.nvim_set_keymap('n', '<leader>k', '<C-w>k', { noremap = true })
 vim.api.nvim_set_keymap('n', '<leader>l', '<C-w>l', { noremap = true })
+
+vim.keymap.set('n', '<leader>u', vim.cmd.UndotreeToggle)
 

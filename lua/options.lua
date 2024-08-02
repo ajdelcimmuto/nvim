@@ -8,7 +8,7 @@ vim.opt.foldenable = false  -- Disable folding at startup.
 -- Enable syntax highlighting
 vim.cmd("syntax on")
 vim.cmd("filetype plugin indent on")
-vim.opt.indentexpr = "nvim_treesitter#indentexpr()"
+vim.opt.indentexpr = "nvim_treesitter#indent()"
 
 vim.opt.scrolloff = 3
 vim.opt.cursorline = true
@@ -25,10 +25,10 @@ vim.opt.mouse = "a"
 -- Set tab settings
 vim.opt.tabstop = 4
 vim.opt.shiftwidth = 4
-vim.opt.expandtab = true
+vim.opt.expandtab = false
 
 vim.cmd [[
-  autocmd FileType brs setlocal tabstop=4 shiftwidth=4 expandtab commentstring='\ %s
+  autocmd FileType brs setlocal commentstring='\ %s
 ]]
 
 -- Enable autoindent
@@ -56,7 +56,10 @@ vim.opt.swapfile = false
 -- Set the clipboard to use the system clipboard
 vim.opt.clipboard = "unnamedplus"
 
-vim.wo.wrap = false
+vim.opt.wrap = false
+vim.opt.textwidth = 200
+-- vim.opt.colorcolumn = "80"
+vim.opt.linebreak = true
 
 -- For gitgutter
 vim.opt.updatetime = 100
