@@ -17,7 +17,7 @@ vim.opt.cursorline = true
 vim.opt.number = true
 
 -- Enable relative line numbers
-vim.opt.relativenumber = false
+vim.opt.relativenumber = true
 
 -- Enable mouse support
 vim.opt.mouse = "a"
@@ -57,11 +57,13 @@ vim.opt.swapfile = false
 vim.opt.clipboard = "unnamedplus"
 
 vim.opt.wrap = false
-vim.opt.textwidth = 200
+vim.opt.sidescrolloff=8
+vim.opt.textwidth = 400
 -- vim.opt.colorcolumn = "80"
-vim.opt.linebreak = true
+vim.opt.linebreak = false
 
 -- For gitgutter
 vim.opt.updatetime = 100
 vim.g.gitgutter_map_keys = 0
 
+-- vim.opt.hidden = false

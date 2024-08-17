@@ -88,4 +88,3 @@ require'nvim-treesitter'.define_modules {
 }
 
 vim.treesitter.language.register('brightscript', 'brightscript')
-

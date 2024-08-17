@@ -3,7 +3,7 @@ vim.cmd([[
   call plug#begin('~/.config/nvim/plugged')
 
   " Alpha welcomer
-  Plug 'goolord/alpha-nvim'
+  " Plug 'goolord/alpha-nvim'
 
   " treesitter
   Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
@@ -45,6 +45,10 @@ vim.cmd([[
 
   " Git diff view
   Plug 'sindrets/diffview.nvim'
+
+  "gitgraph
+  Plug 'isakbm/gitgraph.nvim' 
+
   " Git show adds and subtracts
   Plug 'airblade/vim-gitgutter'
 
@@ -72,6 +76,12 @@ vim.cmd([[
   " undo redo tree 
   Plug 'mbbill/undotree'
 
+  " tabs
+  " Plug 'romgrk/barbar.nvim'
+
+  " Harpoon
+  Plug 'ThePrimeagen/harpoon', { 'branch': 'harpoon2' }
+
   " Initialize plugin system
   call plug#end()
 ]])
@@ -85,4 +95,5 @@ require('plugins.ibl')
 require('plugins.treesitter')
 require('plugins.alpha')
 require('plugins.telescope')
+require('plugins.gitgraph')
 
