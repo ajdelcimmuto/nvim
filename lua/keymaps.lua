@@ -39,8 +39,8 @@ map("n", "<F3>", ":lua require('dap').step_out()<CR>", { noremap = true })
 -- map("n", "<Leader>dc", ":lua require('dap.ui.variables').scopes()<CR>", { noremap = true })
 -- map("n", "<Leader>di", ":lua require('dapui').toggle()<CR>", { noremap = true })
 
--- Configure NERDTree
-vim.api.nvim_set_keymap("n", "<leader>n", ":NERDTreeToggle<CR>", { noremap = true })
+-- Configure Oil
+map("n", "-", ":lua require('oil').open_float('.')<CR>", { noremap = true, silent = true })
 
 -- Configure telescope
 local builtin = require('telescope.builtin')
@@ -56,12 +56,6 @@ vim.keymap.set('n', '<leader>bp', ':bprevious<CR>', { noremap = true, silent = t
 
 -- Open a new empty tab
 vim.api.nvim_set_keymap('n', '<leader>t', ':tabnew<CR>', { noremap = true, silent = true })
-
--- Go to the next tab
--- vim.api.nvim_set_keymap('n', '<leader>x', ':tabnext<CR>', { noremap = true, silent = true })
-
--- -- Go to the previous tab
--- vim.api.nvim_set_keymap('n', '<leader>z', ':tabprevious<CR>', { noremap = true, silent = true })
 
 -- commenting
 vim.keymap.set('n', '<leader>c', 'gcc', { noremap = true, silent = true })

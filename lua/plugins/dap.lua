@@ -56,6 +56,7 @@ dap.configurations.brs = {
 		remotePort = 8060,
 		password = "pluto",
 		injectRaleTrackerTask = true,
+        raleTrackerTaskFileLocation = "${workspaceFolder}/RALEComponent/",
 		outDir = "${workspaceFolder}/out/",
 		enableDebugProtocol = true,
 		fileLogging = false,

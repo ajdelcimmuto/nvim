@@ -2,9 +2,6 @@
 vim.cmd([[
   call plug#begin('~/.config/nvim/plugged')
 
-  " Alpha welcomer
-  " Plug 'goolord/alpha-nvim'
-
   " treesitter
   Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
   Plug 'nvim-treesitter/nvim-treesitter-textobjects'
@@ -14,10 +11,9 @@ vim.cmd([[
   Plug 'folke/tokyonight.nvim'
 
   " A file explorer plugin
-  Plug 'preservim/nerdtree'
+  Plug 'stevearc/oil.nvim'
 
   " A fuzzy file finder plugin
-
   Plug 'nvim-lua/plenary.nvim'
   Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.6' }
 
@@ -33,9 +29,6 @@ vim.cmd([[
   Plug 'hrsh7th/nvim-cmp'
   Plug 'hrsh7th/vim-vsnip'
   Plug 'hrsh7th/vim-vsnip-integ' 
-
-  " Roku language support
-  " Plug 'ajdelcimmuto/roku.vim'
 
   " Nvim DAP - debugger
   Plug 'mfussenegger/nvim-dap'
@@ -76,9 +69,6 @@ vim.cmd([[
   " undo redo tree 
   Plug 'mbbill/undotree'
 
-  " tabs
-  " Plug 'romgrk/barbar.nvim'
-
   " Harpoon
   Plug 'ThePrimeagen/harpoon', { 'branch': 'harpoon2' }
 
@@ -93,7 +83,6 @@ require('plugins.dap')
 require('plugins.theme')
 require('plugins.ibl')
 require('plugins.treesitter')
-require('plugins.alpha')
 require('plugins.telescope')
 require('plugins.gitgraph')
-
+require('plugins.oil')
