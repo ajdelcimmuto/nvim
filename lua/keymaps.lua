@@ -50,6 +50,22 @@ vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
 vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
 -- Telescope, but custom functionality for easy search while in visual mode
 vim.keymap.set("v", "<leader>fg", '"zy<Cmd>lua require("telescope.builtin").grep_string({search=vim.fn.getreg("z")})<CR>')
+vim.keymap.set("v", "<leader>fw", function()
+    -- Yank the selected text into the 'z' register
+    vim.cmd('normal! "zy')
+
+    -- Escape special characters in the search pattern
+    local escaped_text = vim.fn.escape(vim.fn.getreg('z'), '\\[].*^$')
+
+    -- Set the search register with the escaped text
+    vim.fn.setreg('/', escaped_text)
+
+    -- Trigger the search
+    vim.cmd('normal! n')
+
+    -- Turn on search highlighting
+    vim.opt.hlsearch = true
+end, { noremap = true, silent = true })
 
 -- Go to previous buffer
 vim.keymap.set('n', '<leader>bp', ':bprevious<CR>', { noremap = true, silent = true })
@@ -105,11 +121,15 @@ vim.keymap.set("n", "<leader>3", function() harpoon:list():select(3) end)
 vim.keymap.set("n", "<leader>4", function() harpoon:list():select(4) end)
 
 -- Optional: Quick navigation between next and previous Harpoon marks
--- vim.keymap.set("n", "<leader>n", function() harpoon:list():prev() end)
--- vim.keymap.set("n", "<leader>p", function() harpoon:list():next() end)
+vim.keymap.set("n", "<leader>n", function() harpoon:list():prev() end)
+vim.keymap.set("n", "<leader>p", function() harpoon:list():next() end)
 
 -- Git graph Key mapping
 vim.api.nvim_set_keymap('n', '<leader>gl', [[<cmd>lua require('gitgraph').draw({}, { all = true, max_count = 5000 })<CR>]], { noremap = true, silent = true, desc = "GitGraph - Draw" })
+
+-- Git gutter navigate hunks
+vim.api.nvim_set_keymap('n', ']h', '<Plug>(GitGutterNextHunk)', {noremap = false, silent = true})
+vim.api.nvim_set_keymap('n', '[h', '<Plug>(GitGutterPrevHunk)', {noremap = false, silent = true})
 
 -- Diffview Open
 vim.api.nvim_set_keymap('n', '<leader>do', ':DiffviewOpen<CR>', { noremap = true, silent = true, desc = "Diffview Open" })

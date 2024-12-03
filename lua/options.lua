@@ -27,6 +27,9 @@ vim.opt.tabstop = 4
 vim.opt.shiftwidth = 4
 vim.opt.expandtab = false
 
+-- Set list options
+vim.opt.listchars = { tab = '>-', trail = '•', space = '·', eol = '↵' }
+
 vim.cmd [[
   autocmd FileType brs setlocal commentstring='\ %s
 ]]
@@ -66,4 +69,33 @@ vim.opt.linebreak = false
 vim.opt.updatetime = 100
 vim.g.gitgutter_map_keys = 0
 
--- vim.opt.hidden = false
+-- -- vim.opt.hidden = false
+-- vim.opt.listchars = {
+--     tab = '  ',
+--     nbsp = '␣',
+--     trail = '•',
+--     extends = '⟩',
+--     precedes = '⟨'
+-- }
+
+vim.api.nvim_create_autocmd('FileType', {
+	group = vim.api.nvim_create_augroup('trim_whitespaces', { clear = true }),
+	desc = 'Trim trailing white spaces and fix formatting',
+	pattern = '*',
+	callback = function()
+		vim.api.nvim_create_autocmd('BufWritePre', {
+			pattern = '<buffer>',
+			callback = function()
+				local curpos = vim.api.nvim_win_get_cursor(0)
+
+				-- Trimm trailing whitespaces and remove multiple empty lines
+				vim.cmd([[keeppatterns %s/\s\+$//e | keeppatterns %s/\n\{3,}/\r\r/e]])
+
+				-- Remove all extra newlines at the end of the file and add one if missing
+				vim.cmd([[keeppatterns %s/\n\+\%$//e | keeppatterns %s/\%$[^\n]/&\r/e]])
+
+				vim.api.nvim_win_set_cursor(0, curpos)
+			end,
+		})
+	end,
+})

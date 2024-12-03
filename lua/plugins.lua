@@ -6,12 +6,16 @@ vim.cmd([[
   Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
   Plug 'nvim-treesitter/nvim-treesitter-textobjects'
 
-  " The catppuccin/nvim theme plugin
+  " theme plugins
   Plug 'catppuccin/nvim', { 'as': 'catppuccin' }
   Plug 'folke/tokyonight.nvim'
+  Plug 'ellisonleao/gruvbox.nvim'
+  Plug 'sainnhe/everforest'
+  Plug 'sainnhe/sonokai'
 
   " A file explorer plugin
   Plug 'stevearc/oil.nvim'
+  Plug 'nvim-tree/nvim-tree.lua'
 
   " A fuzzy file finder plugin
   Plug 'nvim-lua/plenary.nvim'
@@ -28,7 +32,7 @@ vim.cmd([[
   Plug 'hrsh7th/cmp-cmdline'
   Plug 'hrsh7th/nvim-cmp'
   Plug 'hrsh7th/vim-vsnip'
-  Plug 'hrsh7th/vim-vsnip-integ' 
+  Plug 'hrsh7th/vim-vsnip-integ'
 
   " Nvim DAP - debugger
   Plug 'mfussenegger/nvim-dap'
@@ -40,18 +44,19 @@ vim.cmd([[
   Plug 'sindrets/diffview.nvim'
 
   "gitgraph
-  Plug 'isakbm/gitgraph.nvim' 
+  Plug 'isakbm/gitgraph.nvim'
+
+  "git blame
+  Plug 'f-person/git-blame.nvim'
 
   " Git show adds and subtracts
   Plug 'airblade/vim-gitgutter'
 
   " visualize tabs
   Plug 'lukas-reineke/indent-blankline.nvim'
-  
+
   " comment plugin
   Plug 'tpope/vim-commentary'
-
-  Plug 'ellisonleao/gruvbox.nvim'
 
   Plug 'nvim-tree/nvim-web-devicons'
 
@@ -65,12 +70,15 @@ vim.cmd([[
 
   "Formatter for json
   Plug 'sbdchd/neoformat'
-  
-  " undo redo tree 
+
+  " undo redo tree
   Plug 'mbbill/undotree'
 
   " Harpoon
   Plug 'ThePrimeagen/harpoon', { 'branch': 'harpoon2' }
+
+  " vim surround
+  Plug 'tpope/vim-surround'
 
   " Initialize plugin system
   call plug#end()
@@ -86,3 +94,4 @@ require('plugins.treesitter')
 require('plugins.telescope')
 require('plugins.gitgraph')
 require('plugins.oil')
+require('plugins.nvim-tree')
