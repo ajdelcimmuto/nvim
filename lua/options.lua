@@ -27,9 +27,6 @@ vim.opt.tabstop = 4
 vim.opt.shiftwidth = 4
 vim.opt.expandtab = false
 
--- Set list options
-vim.opt.listchars = { tab = '>-', trail = '•', space = '·', eol = '↵' }
-
 vim.cmd [[
   autocmd FileType brs setlocal commentstring='\ %s
 ]]
@@ -69,14 +66,18 @@ vim.opt.linebreak = false
 vim.opt.updatetime = 100
 vim.g.gitgutter_map_keys = 0
 
--- -- vim.opt.hidden = false
--- vim.opt.listchars = {
---     tab = '  ',
---     nbsp = '␣',
---     trail = '•',
---     extends = '⟩',
---     precedes = '⟨'
--- }
+vim.opt.list = true
+vim.opt.listchars = {
+    space = '·',  -- Middle dot for spaces
+    tab = '· ',    -- Vertical line for tabs, keeping ibl compatibility
+    eol = '↵'
+}
+
+vim.o.winbar = "%{%v:lua.require'nvim-navic'.get_location()%}"
+
+-- Set scroll to 10 lines
+-- Make sure this line goes after winbar!!!!
+vim.opt.scroll = 10
 
 vim.api.nvim_create_autocmd('FileType', {
 	group = vim.api.nvim_create_augroup('trim_whitespaces', { clear = true }),

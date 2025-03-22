@@ -34,6 +34,9 @@ vim.cmd([[
   Plug 'hrsh7th/vim-vsnip'
   Plug 'hrsh7th/vim-vsnip-integ'
 
+  " statusline/winbar
+  Plug 'SmiteshP/nvim-navic'
+
   " Nvim DAP - debugger
   Plug 'mfussenegger/nvim-dap'
   Plug 'nvim-neotest/nvim-nio'
@@ -42,9 +45,6 @@ vim.cmd([[
 
   " Git diff view
   Plug 'sindrets/diffview.nvim'
-
-  "gitgraph
-  Plug 'isakbm/gitgraph.nvim'
 
   "git blame
   Plug 'f-person/git-blame.nvim'
@@ -77,8 +77,15 @@ vim.cmd([[
   " Harpoon
   Plug 'ThePrimeagen/harpoon', { 'branch': 'harpoon2' }
 
-  " vim surround
-  Plug 'tpope/vim-surround'
+  " nvim surround
+  Plug 'kylechui/nvim-surround'
+
+  " obsidian support
+  Plug 'epwalsh/obsidian.nvim'
+  Plug 'nvim-lua/plenary.nvim'
+
+  " large file editing
+  Plug 'LunarVim/bigfile.nvim'
 
   " Initialize plugin system
   call plug#end()
@@ -92,6 +99,8 @@ require('plugins.theme')
 require('plugins.ibl')
 require('plugins.treesitter')
 require('plugins.telescope')
-require('plugins.gitgraph')
 require('plugins.oil')
 require('plugins.nvim-tree')
+require('plugins.nvim-surround')
+require('plugins.obsidian')
+require('plugins.bigfile')

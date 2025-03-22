@@ -18,27 +18,6 @@ map("n", "<F1>", ":lua require('dap').step_over()<CR>", { noremap = true })
 map("n", "<F2>", ":lua require('dap').step_into()<CR>", { noremap = true })
 map("n", "<F3>", ":lua require('dap').step_out()<CR>", { noremap = true })
 
--- map("n", "<Leader>dsc", ":lua require('dap').continue()<CR>", { noremap = true })
--- map("n", "<Leader>dsv", ":lua require('dap').step_over()<CR>", { noremap = true })
--- map("n", "<Leader>dsi", ":lua require('dap').step_into()<CR>", { noremap = true })
--- map("n", "<Leader>dso", ":lua require('dap').step_out()<CR>", { noremap = true })
-
--- map("n", "<Leader>dhh", ":lua require('dap.ui.variables').hover()<CR>", { noremap = true })
--- map("v", "<Leader>dhv", ":lua require('dap.ui.variables').visual_hover()<CR>", { noremap = true })
-
--- map("n", "<Leader>duh", ":lua require('dap.ui.widgets').hover()<CR>", { noremap = true })
--- map("n", "<Leader>duf", ":lua local widgets=require('dap.ui.widgets');widgets.centered_float(widgets.scopes)<CR>", { noremap = true })
-
--- map("n", "<Leader>dro", ":lua require('dap').repl.open()<CR>", { noremap = true })
--- map("n", "<Leader>drl", ":lua require('dap').repl.run_last()<CR>", { noremap = true })
-
--- map("n", "<Leader>dbc", ":lua require('dap').set_breakpoint(vim.fn.input('Breakpoint condition: '))<CR>", { noremap = true })
--- map("n", "<Leader>dbm", ":lua require('dap').set_breakpoint({ nil, nil, vim.fn.input('Log point message: ') })<CR>", { noremap = true })
--- map("n", "<Leader>dbt", ":lua require('dap').toggle_breakpoint()<CR>", { noremap = true })
-
--- map("n", "<Leader>dc", ":lua require('dap.ui.variables').scopes()<CR>", { noremap = true })
--- map("n", "<Leader>di", ":lua require('dapui').toggle()<CR>", { noremap = true })
-
 -- Configure Oil
 map("n", "-", ":lua require('oil').open_float('.')<CR>", { noremap = true, silent = true })
 
@@ -48,6 +27,7 @@ vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
 vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
 vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
 vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
+vim.keymap.set('n', '<leader>fm', ":Telescope harpoon marks<CR>", {})
 -- Telescope, but custom functionality for easy search while in visual mode
 vim.keymap.set("v", "<leader>fg", '"zy<Cmd>lua require("telescope.builtin").grep_string({search=vim.fn.getreg("z")})<CR>')
 vim.keymap.set("v", "<leader>fw", function()
@@ -101,17 +81,11 @@ vim.keymap.set('x', 'p', [["_dP]])
 -- Optional: Also preserve when using capital P
 vim.keymap.set('x', 'P', [["_dP]])
 
+-- HARPOON
 local harpoon = require("harpoon")
 harpoon:setup()
-
 -- Add current file to Harpoon list
 vim.keymap.set("n", "<leader>a", function() harpoon:list():add() end)
--- Toggle-- Remove current file from Harpoon list with detailed debug info
-vim.keymap.set("n", "<leader>d", function()
-    harpoon:list():remove()
-    -- print_harpoon_list()
-end, { desc = "Remove current file from Harpoon" })
-
 vim.keymap.set("n", "<leader>e", function() harpoon.ui:toggle_quick_menu(harpoon:list()) end)
 
 -- Navigate to files in Harpoon list
@@ -119,6 +93,10 @@ vim.keymap.set("n", "<leader>1", function() harpoon:list():select(1) end)
 vim.keymap.set("n", "<leader>2", function() harpoon:list():select(2) end)
 vim.keymap.set("n", "<leader>3", function() harpoon:list():select(3) end)
 vim.keymap.set("n", "<leader>4", function() harpoon:list():select(4) end)
+vim.keymap.set("n", "<leader>5", function() harpoon:list():select(5) end)
+vim.keymap.set("n", "<leader>6", function() harpoon:list():select(6) end)
+vim.keymap.set("n", "<leader>7", function() harpoon:list():select(7) end)
+vim.keymap.set("n", "<leader>8", function() harpoon:list():select(8) end)
 
 -- Optional: Quick navigation between next and previous Harpoon marks
 vim.keymap.set("n", "<leader>n", function() harpoon:list():prev() end)
@@ -136,3 +114,19 @@ vim.api.nvim_set_keymap('n', '<leader>do', ':DiffviewOpen<CR>', { noremap = true
 
 -- Diffview Close
 vim.api.nvim_set_keymap('n', '<leader>dc', ':DiffviewClose<CR>', { noremap = true, silent = true, desc = "Diffview Close" })
+
+vim.keymap.set('n', '<C-d>', '<C-d>zz', { noremap = true })
+vim.keymap.set('n', '<C-u>', '<C-u>zz', { noremap = true })
+
+-- Quick commands for Obsidian functionality
+vim.keymap.set('n', '<leader>zb', ':ObsidianBacklinks<CR>', { desc = 'Show backlinks' })
+vim.keymap.set('n', '<leader>zt', ':ObsidianToday<CR>', { desc = 'Open today\'s note' })
+vim.keymap.set('n', '<leader>zy', ':ObsidianYesterday<CR>', { desc = 'Open yesterday\'s note' })
+vim.keymap.set('n', '<leader>zs', ':ObsidianSearch<CR>', { desc = 'Search notes' })
+vim.keymap.set('n', '<leader>zn', ':ObsidianNew<CR>', { desc = 'Create new note' })
+vim.keymap.set('n', '<leader>zf', ':ObsidianFollowLink<CR>', { desc = 'Follow link under cursor' })
+vim.keymap.set('n', '<leader>zo', ':ObsidianOpen<CR>', { desc = 'Open in Obsidian app' })
+
+-- Telescope integration for fuzzy finding notes
+vim.keymap.set('n', '<leader>fnn', ':Telescope find_files cwd=~/Notes<CR>', { desc = 'Find notes' })
+vim.keymap.set('n', '<leader>fng', ':Telescope live_grep cwd=~/Notes<CR>', { desc = 'Grep notes' })

@@ -22,4 +22,7 @@ require("oil").setup({
 			{ "name", "asc" },
 		},
 	},
+	float = {
+		preview_split = "right"
+	}
 })

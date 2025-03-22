@@ -1,7 +1,7 @@
 vim.api.nvim_create_augroup('BinaryFiles', { clear = true })
 
 vim.api.nvim_create_autocmd({ 'BufReadPre' }, {
-  pattern = { '*.m4s', '*.ts' },
+  pattern = { '*.m4s' },
   callback = function()
     vim.cmd('silent execute "e ++bin %"')
   end,
@@ -9,7 +9,7 @@ vim.api.nvim_create_autocmd({ 'BufReadPre' }, {
 })
 
 vim.api.nvim_create_autocmd({ 'BufReadPost' }, {
-  pattern = { '*.m4s', '*.ts' },
+  pattern = { '*.m4s' },
   callback = function()
     vim.cmd('silent execute "%!xxd"')
   end,
@@ -17,7 +17,7 @@ vim.api.nvim_create_autocmd({ 'BufReadPost' }, {
 })
 
 vim.api.nvim_create_autocmd({ 'BufWritePre' }, {
-  pattern = { '*.m4s', '*.ts' },
+  pattern = { '*.m4s' },
   callback = function()
     vim.cmd('silent execute "%!xxd -r"')
   end,
@@ -25,7 +25,7 @@ vim.api.nvim_create_autocmd({ 'BufWritePre' }, {
 })
 
 vim.api.nvim_create_autocmd({ 'BufWritePost' }, {
-  pattern = { '*.m4s', '*.ts' },
+  pattern = { '*.m4s' },
   callback = function()
     vim.cmd('silent execute "%!xxd"')
   end,
@@ -73,13 +73,13 @@ vim.api.nvim_create_autocmd("FileType", {
   end
 })
 
--- Auto-format on save (optional)
--- vim.api.nvim_create_autocmd("BufWritePre", {
---   pattern = "*.xml",
---   callback = function()
---     vim.cmd("FormatXML")
---   end,
--- })
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "json",
+  callback = function()
+    -- Set up XML formatting command
+	vim.api.nvim_buf_create_user_command(0, "FormatJSON", ":%!jq \'.\'", {})
+  end
+})
 
 -- Set up the autocommand that will determine tabs or spaces on buffer open
 vim.api.nvim_create_autocmd("BufReadPost", {
@@ -96,6 +96,15 @@ vim.api.nvim_create_autocmd("BufReadPost", {
 
 		if numTabs > numSpaces then
 			vim.opt_local.expandtab = false
+		else
+			vim.opt_local.expandtab = true
 		end
 	end
+})
+
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = "markdown",
+    callback = function()
+        vim.opt_local.conceallevel = 2
+    end
 })
