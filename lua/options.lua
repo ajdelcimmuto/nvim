@@ -1,9 +1,15 @@
 -- Set the leader key to space
 vim.g.mapleader = " "
 
-vim.opt.foldmethod = "expr"
-vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
+-- vim.opt.foldmethod = "expr"
+-- vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
 vim.opt.foldenable = false  -- Disable folding at startup.
+vim.opt.foldlevel = 99
+
+vim.opt.foldmethod = 'indent'
+vim.opt.foldnestmax = 10
+-- vim.opt.foldenable = false
+-- vim.opt.foldlevel = 2
 
 -- Enable syntax highlighting
 vim.cmd("syntax on")
@@ -25,7 +31,7 @@ vim.opt.mouse = "a"
 -- Set tab settings
 vim.opt.tabstop = 4
 vim.opt.shiftwidth = 4
-vim.opt.expandtab = false
+vim.opt.expandtab = true
 
 vim.cmd [[
   autocmd FileType brs setlocal commentstring='\ %s
@@ -99,4 +105,12 @@ vim.api.nvim_create_autocmd('FileType', {
 			end,
 		})
 	end,
+})
+
+vim.diagnostic.config({
+    virtual_text = true,
+    signs = true,
+    underline = true,
+    update_in_insert = false,
+    severity_sort = true,
 })

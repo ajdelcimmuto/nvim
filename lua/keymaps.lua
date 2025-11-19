@@ -1,6 +1,3 @@
--- Remap the Esc key to jk
-vim.api.nvim_set_keymap("i", "jk", "<Esc>", { noremap = true })
-
 -- Add a key mapping to save the current file
 vim.api.nvim_set_keymap("n", "<leader>w", ":w<CR>", { noremap = true })
 
@@ -19,7 +16,9 @@ map("n", "<F2>", ":lua require('dap').step_into()<CR>", { noremap = true })
 map("n", "<F3>", ":lua require('dap').step_out()<CR>", { noremap = true })
 
 -- Configure Oil
-map("n", "-", ":lua require('oil').open_float('.')<CR>", { noremap = true, silent = true })
+-- map("n", "-", ":lua require('oil').open_float('.')<CR>", { noremap = true, silent = true })
+-- Updated mapping to show preview automatically when opening Oil in float mode
+map("n", "-", ":Oil --float --preview .<CR>", { noremap = true, silent = true })
 
 -- Configure telescope
 local builtin = require('telescope.builtin')
@@ -61,25 +60,48 @@ vim.keymap.set('v', '<leader>c', 'gc', { noremap = true, silent = true })
 vim.keymap.set('n', 'gd', vim.lsp.buf.definition, { noremap = true, silent = true })
 vim.keymap.set('n', 'gb', vim.lsp.buf.references, { noremap = true, silent = true })
 
+vim.keymap.set('n', '<leader>h', function()
+  vim.lsp.buf_request(0, 'textDocument/switchSourceHeader', {
+    uri = vim.uri_from_bufnr(0)
+  }, function(err, result)
+    if err then
+      vim.notify('Error switching header/source: ' .. tostring(err), vim.log.levels.ERROR)
+      return
+    end
+    if result then
+      vim.cmd('edit ' .. vim.uri_to_fname(result))
+    else
+      vim.notify('No corresponding header/source file found', vim.log.levels.WARN)
+    end
+  end)
+end, { desc = 'Switch Header/Source' })
+
+-- vim.keymap.set('n', '<leader>h', '<cmd>ClangdSwitchSourceHeader<cr>', { desc = 'Switch Header/Source' })
+vim.keymap.set('n', 'E', vim.diagnostic.open_float, { desc = 'Show line diagnostics' })
+vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, opts)
+vim.keymap.set('n', '<leader>nd', vim.diagnostic.goto_next, opts)
+
 vim.g.fzf_action = {
   ['ctrl-v'] = 'vsplit',
   ['ctrl-x'] = 'split',
   ['ctrl-t'] = 'tab split',
 }
 
-vim.api.nvim_set_keymap('n', '<leader>h', '<C-w>h', { noremap = true })
-vim.api.nvim_set_keymap('n', '<leader>j', '<C-w>j', { noremap = true })
-vim.api.nvim_set_keymap('n', '<leader>k', '<C-w>k', { noremap = true })
-vim.api.nvim_set_keymap('n', '<leader>l', '<C-w>l', { noremap = true })
+-- vim.api.nvim_set_keymap('n', '<leader>h', '<C-w>h', { noremap = true })
+-- vim.api.nvim_set_keymap('n', '<leader>j', '<C-w>j', { noremap = true })
+-- vim.api.nvim_set_keymap('n', '<leader>k', '<C-w>k', { noremap = true })
+-- vim.api.nvim_set_keymap('n', '<leader>l', '<C-w>l', { noremap = true })
 
 vim.keymap.set('n', '<leader>u', vim.cmd.UndotreeToggle)
 
 -- Paste override
 -- Preserve yanked text when pasting in visual mode
-vim.keymap.set('x', 'p', [["_dP]])
+-- vim.keymap.set('x', 'p', [["_dp]])
 
 -- Optional: Also preserve when using capital P
-vim.keymap.set('x', 'P', [["_dP]])
+-- vim.keymap.set('x', 'P', [["_dP]])
+
+vim.keymap.set('n', '<C-c>', "<cmd>close<cr>", { desc = "Close window" })
 
 -- HARPOON
 local harpoon = require("harpoon")

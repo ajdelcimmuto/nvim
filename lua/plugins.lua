@@ -87,6 +87,8 @@ vim.cmd([[
   " large file editing
   Plug 'LunarVim/bigfile.nvim'
 
+  Plug 'ThePrimeagen/vim-be-good'
+
   " Initialize plugin system
   call plug#end()
 ]])
@@ -104,3 +106,5 @@ require('plugins.nvim-tree')
 require('plugins.nvim-surround')
 require('plugins.obsidian')
 require('plugins.bigfile')
+require('plugins.hex')
+require('plugins.lualine')

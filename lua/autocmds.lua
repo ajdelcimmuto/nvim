@@ -81,30 +81,42 @@ vim.api.nvim_create_autocmd("FileType", {
   end
 })
 
--- Set up the autocommand that will determine tabs or spaces on buffer open
-vim.api.nvim_create_autocmd("BufReadPost", {
-  pattern = "*",
-  callback = function()
-		-- Determines whether to use spaces or tabs on the current buffer.
-		if vim.fn.getfsize(vim.fn.bufname("%")) > 256000 then
-			-- File is very large, just use the default.
-			return
-		end
+-- -- Set up the autocommand that will determine tabs or spaces on buffer open
+-- vim.api.nvim_create_autocmd("BufReadPost", {
+--   pattern = "*",
+--   callback = function()
+-- 		-- Determines whether to use spaces or tabs on the current buffer.
+-- 		if vim.fn.getfsize(vim.fn.bufname("%")) > 256000 then
+-- 			-- File is very large, just use the default.
+-- 			return
+-- 		end
 
-		local numTabs = #vim.fn.filter(vim.fn.getbufline(vim.fn.bufname("%"), 1, 250), 'v:val =~ "^\\t"')
-		local numSpaces = #vim.fn.filter(vim.fn.getbufline(vim.fn.bufname("%"), 1, 250), 'v:val =~ "^ "')
+-- 		local numTabs = #vim.fn.filter(vim.fn.getbufline(vim.fn.bufname("%"), 1, 250), 'v:val =~ "^\\t"')
+-- 		local numSpaces = #vim.fn.filter(vim.fn.getbufline(vim.fn.bufname("%"), 1, 250), 'v:val =~ "^ "')
 
-		if numTabs > numSpaces then
-			vim.opt_local.expandtab = false
-		else
-			vim.opt_local.expandtab = true
-		end
-	end
-})
+-- 		if numTabs > numSpaces then
+-- 			vim.opt_local.expandtab = false
+-- 		else
+-- 			vim.opt_local.expandtab = true
+-- 		end
+-- 	end
+-- })
 
 vim.api.nvim_create_autocmd("FileType", {
     pattern = "markdown",
     callback = function()
         vim.opt_local.conceallevel = 2
     end
+})
+
+-- Set up filetype-specific folding for XML
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "xml",
+  callback = function()
+    -- Use indent method for XML files as it often works better than Treesitter
+    vim.opt_local.foldmethod = "indent"
+    -- Adjust these to your preference
+    vim.opt_local.foldnestmax = 20
+    vim.opt_local.shiftwidth = 4
+  end
 })
