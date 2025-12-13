@@ -33,9 +33,6 @@ vim.cmd([[
   " statusline/winbar
   Plug 'SmiteshP/nvim-navic'
 
-  Plug 'nvim-neotest/nvim-nio'
-  Plug 'folke/neodev.nvim'
-
   "git blame
   Plug 'f-person/git-blame.nvim'
 
