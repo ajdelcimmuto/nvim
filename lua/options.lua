@@ -1,112 +1,67 @@
--- Set the leader key to space
-vim.g.mapleader = " "
+-- UI
+vim.opt.number = true
+vim.opt.relativenumber = true
+vim.opt.cursorline = true
+vim.opt.scrolloff = 3
+vim.opt.sidescrolloff = 8
+vim.opt.wrap = false
+vim.opt.linebreak = false
+vim.opt.textwidth = 400
 
--- vim.opt.foldmethod = "expr"
--- vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
-vim.opt.foldenable = false  -- Disable folding at startup.
+-- Search
+vim.opt.ignorecase = true
+vim.opt.smartcase = true
+vim.opt.hlsearch = true
+vim.opt.incsearch = true
+
+-- Indentation
+vim.opt.tabstop = 4
+vim.opt.shiftwidth = 4
+vim.opt.expandtab = true
+vim.opt.autoindent = true
+vim.opt.smartindent = true
+
+-- Folding
+vim.opt.foldenable = false
 vim.opt.foldlevel = 99
-
 vim.opt.foldmethod = 'indent'
 vim.opt.foldnestmax = 10
--- vim.opt.foldenable = false
--- vim.opt.foldlevel = 2
 
--- Enable syntax highlighting
+-- Files
+vim.opt.swapfile = false
+vim.opt.encoding = "utf-8"
+
+-- System integration
+vim.opt.mouse = "a"
+vim.opt.clipboard = "unnamedplus"
+vim.opt.updatetime = 100
+
+-- Whitespace visualization
+vim.opt.list = true
+vim.opt.listchars = {
+    space = '·',
+    tab = '· ',
+    eol = '↵'
+}
+
+-- Syntax and filetype
 vim.cmd("syntax on")
 vim.cmd("filetype plugin indent on")
 vim.opt.indentexpr = "nvim_treesitter#indent()"
 
-vim.opt.scrolloff = 3
-vim.opt.cursorline = true
+-- Custom filetype settings
+vim.cmd([[
+    autocmd FileType brs setlocal commentstring='\ %s
+]])
 
--- Enable line numbers
-vim.opt.number = true
-
--- Enable relative line numbers
-vim.opt.relativenumber = true
-
--- Enable mouse support
-vim.opt.mouse = "a"
-
--- Set tab settings
-vim.opt.tabstop = 4
-vim.opt.shiftwidth = 4
-vim.opt.expandtab = true
-
-vim.cmd [[
-  autocmd FileType brs setlocal commentstring='\ %s
-]]
-
--- Enable autoindent
-vim.opt.autoindent = true
-
--- Enable smart indentation
-vim.opt.smartindent = true
-
--- Enable case-insensitive search
-vim.opt.ignorecase = true
-vim.opt.smartcase = true
-
--- Highlight search results
-vim.opt.hlsearch = true
-
--- Enable incremental search
-vim.opt.incsearch = true
-
--- Set the default encoding
-vim.opt.encoding = "utf-8"
-
--- Disable swap files
-vim.opt.swapfile = false
-
--- Set the clipboard to use the system clipboard
-vim.opt.clipboard = "unnamedplus"
-
-vim.opt.wrap = false
-vim.opt.sidescrolloff=8
-vim.opt.textwidth = 400
--- vim.opt.colorcolumn = "80"
-vim.opt.linebreak = false
-
--- For gitgutter
-vim.opt.updatetime = 100
+-- Plugin-specific (consider moving to plugin config files)
 vim.g.gitgutter_map_keys = 0
-
-vim.opt.list = true
-vim.opt.listchars = {
-    space = '·',  -- Middle dot for spaces
-    tab = '· ',    -- Vertical line for tabs, keeping ibl compatibility
-    eol = '↵'
-}
-
 vim.o.winbar = "%{%v:lua.require'nvim-navic'.get_location()%}"
 
--- Set scroll to 10 lines
--- Make sure this line goes after winbar!!!!
+-- IMPORTANT: Must come after winbar setting
 vim.opt.scroll = 10
 
-vim.api.nvim_create_autocmd('FileType', {
-	group = vim.api.nvim_create_augroup('trim_whitespaces', { clear = true }),
-	desc = 'Trim trailing white spaces and fix formatting',
-	pattern = '*',
-	callback = function()
-		vim.api.nvim_create_autocmd('BufWritePre', {
-			pattern = '<buffer>',
-			callback = function()
-				local curpos = vim.api.nvim_win_get_cursor(0)
-
-				-- Trimm trailing whitespaces and remove multiple empty lines
-				vim.cmd([[keeppatterns %s/\s\+$//e | keeppatterns %s/\n\{3,}/\r\r/e]])
-
-				-- Remove all extra newlines at the end of the file and add one if missing
-				vim.cmd([[keeppatterns %s/\n\+\%$//e | keeppatterns %s/\%$[^\n]/&\r/e]])
-
-				vim.api.nvim_win_set_cursor(0, curpos)
-			end,
-		})
-	end,
-})
-
+-- Diagnostics
 vim.diagnostic.config({
     virtual_text = true,
     signs = true,
