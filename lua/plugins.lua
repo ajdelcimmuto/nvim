@@ -20,7 +20,9 @@ vim.cmd([[
   " A status line plugin
   Plug 'nvim-lualine/lualine.nvim'
 
-  " A roku support plugin
+  " LSP
+  Plug 'mason-org/mason.nvim'
+  Plug 'mason-org/mason-lspconfig.nvim'
   Plug 'neovim/nvim-lspconfig'
   Plug 'hrsh7th/cmp-nvim-lsp'
   Plug 'hrsh7th/cmp-buffer'
@@ -77,8 +79,8 @@ vim.cmd([[
 vim.g.mapleader = " "
 
 -- Load individual plugin configurations
+require('plugins.mason')
 require('plugins.cmp')
-require('plugins.lsp')
 require('plugins.theme')
 require('plugins.ibl')
 require('plugins.harpoon')
