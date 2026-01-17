@@ -56,7 +56,7 @@ vim.lsp.config('clangd', {
         "--limit-references=100",
         "--malloc-trim",
     },
-    root_markers = { 'compile_commands.json', '.git', 'Makefile' },
+    root_markers = { 'compile_commands.json', 'build/compile_commands.json', '.git', 'Makefile' },
     capabilities = capabilities,
 })
 

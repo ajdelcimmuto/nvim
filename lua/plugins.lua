@@ -67,6 +67,8 @@ vim.cmd([[
 
   Plug 'ThePrimeagen/vim-be-good'
 
+  Plug 'chentoast/marks.nvim'
+
   " Initialize plugin system
   call plug#end()
 ]])
@@ -87,3 +89,4 @@ require('plugins.nvim-tree')
 require('plugins.nvim-surround')
 require('plugins.lualine')
 require('plugins.navic')
+require('plugins.marks')
