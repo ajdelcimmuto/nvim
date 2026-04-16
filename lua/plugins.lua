@@ -3,11 +3,14 @@ vim.cmd([[
   call plug#begin('~/.config/nvim/plugged')
 
   " treesitter
-  Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+  Plug 'nvim-treesitter/nvim-treesitter', {'branch': 'main', 'do': ':TSUpdate'}
   Plug 'nvim-treesitter/nvim-treesitter-textobjects'
 
   " theme plugins
   Plug 'folke/tokyonight.nvim'
+  Plug 'nyoom-engineering/oxocarbon.nvim'
+  Plug 'rktjmp/lush.nvim'
+  Plug 'zenbones-theme/zenbones.nvim'
 
   " A file explorer plugin
   Plug 'stevearc/oil.nvim'
@@ -15,10 +18,13 @@ vim.cmd([[
 
   " A fuzzy file finder plugin
   Plug 'nvim-lua/plenary.nvim'
-  Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.6' }
+  Plug 'nvim-telescope/telescope.nvim'
 
   " A status line plugin
   Plug 'nvim-lualine/lualine.nvim'
+
+  " conform
+  Plug 'stevearc/conform.nvim'
 
   " LSP
   Plug 'mason-org/mason.nvim'
@@ -71,6 +77,12 @@ vim.cmd([[
 
   Plug 'chentoast/marks.nvim'
 
+  Plug 'windwp/nvim-autopairs'
+
+  Plug 'folke/lazydev.nvim'
+
+  Plug 'sindrets/diffview.nvim'
+
   " Initialize plugin system
   call plug#end()
 ]])
@@ -92,3 +104,5 @@ require('plugins.nvim-surround')
 require('plugins.lualine')
 require('plugins.navic')
 require('plugins.marks')
+require('plugins.conform')
+require('plugins.lazydev')

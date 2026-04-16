@@ -1,4 +1,3 @@
-print("Loading harpoon config...")
 local harpoon = require("harpoon")
 harpoon:setup()
 

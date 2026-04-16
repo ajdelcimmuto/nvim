@@ -21,7 +21,7 @@ cmp.setup({
         ['<C-f>'] = cmp.mapping.scroll_docs(4),
         ['<C-Space>'] = cmp.mapping.complete(),
         ['<C-e>'] = cmp.mapping.abort(),
-        ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+        ['<C-y>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
     }),
     sources = cmp.config.sources({
         { name = 'nvim_lsp' },
@@ -61,3 +61,22 @@ cmp.setup.cmdline(':', {
     }),
     matching = { disallow_symbol_nonprefix_matching = false }
 })
+
+require("nvim-autopairs").setup({
+    check_ts = true,
+    ts_config = {
+        lua = {'string'},
+        javascript = {'template_string'},
+        java = false,
+    },
+    disable_filetype = { "TelescopePrompt", "vim" },
+})
+
+-- Integration with nvim-cmp
+local cmp_autopairs = require('nvim-autopairs.completion.cmp')
+local cmp = require('cmp')
+
+cmp.event:on(
+    'confirm_done',
+    cmp_autopairs.on_confirm_done()
+)

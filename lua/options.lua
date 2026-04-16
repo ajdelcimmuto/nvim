@@ -15,17 +15,17 @@ vim.opt.hlsearch = true
 vim.opt.incsearch = true
 
 -- Indentation
-vim.opt.tabstop = 4
-vim.opt.shiftwidth = 4
+vim.opt.tabstop = 2
+vim.opt.shiftwidth = 2
 vim.opt.expandtab = true
 vim.opt.autoindent = true
 vim.opt.smartindent = true
 
 -- Folding
-vim.opt.foldenable = false
-vim.opt.foldlevel = 99
-vim.opt.foldmethod = 'indent'
-vim.opt.foldnestmax = 10
+vim.opt.foldmethod = 'expr'
+vim.opt.foldexpr = 'nvim_treesitter#foldexpr()'
+vim.opt.foldenable = false -- Start with folds open
+vim.opt.foldlevel = 99     -- High value = most folds open by default
 
 -- Files
 vim.opt.swapfile = false
@@ -47,7 +47,6 @@ vim.opt.listchars = {
 -- Syntax and filetype
 vim.cmd("syntax on")
 vim.cmd("filetype plugin indent on")
-vim.opt.indentexpr = "nvim_treesitter#indent()"
 
 -- Custom filetype settings
 vim.cmd([[

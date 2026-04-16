@@ -31,7 +31,7 @@ vim.lsp.config('ts_ls', {
 vim.lsp.config('clangd', {
     cmd = {
         "clangd",
-        "--clang-tidy=false"
+        "--clang-tidy=false",
     },
     root_markers = {
         'compile_commands.json',
